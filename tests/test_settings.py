@@ -1,1 +1,1 @@
-SECRET_KEY = 'not empty'
+SECRET_KEY = "not empty"

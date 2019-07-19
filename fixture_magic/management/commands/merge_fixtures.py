@@ -19,10 +19,12 @@ def write_json(output):
 
 
 class Command(BaseCommand):
-    help = 'Merge a series of fixtures and remove duplicates.'
+    help = "Merge a series of fixtures and remove duplicates."
 
     def add_arguments(self, parser):
-        parser.add_argument('args', metavar='files', nargs='+', help='One or more fixture.')
+        parser.add_argument(
+            "args", metavar="files", nargs="+", help="One or more fixture."
+        )
 
     def handle(self, *files, **options):
         """
@@ -36,7 +38,7 @@ class Command(BaseCommand):
             f = open(f)
             data = json.loads(f.read())
             for obj in data:
-                key = '%s|%s' % (obj['model'], obj['pk'])
+                key = "%s|%s" % (obj["model"], obj["pk"])
                 if key not in seen:
                     seen[key] = 1
                     output.append(obj)

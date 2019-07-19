@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-__author__ = 'davedash'
+__author__ = "davedash"
 
 
 def test_import():
