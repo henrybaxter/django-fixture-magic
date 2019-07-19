@@ -81,6 +81,13 @@ class Command(BaseCommand):
             ),
         )
         parser.add_argument(
+            "--count",
+            dest="count",
+            type=int,
+            default=None,
+            help=("Specify a maximum number regardless of query or ids"),
+        )
+        parser.add_argument(
             "--no-follow",
             action="store_false",
             dest="follow_fk",
@@ -161,6 +168,9 @@ class Command(BaseCommand):
                         pass
                     except ObjectDoesNotExist:
                         pass
+
+        if options["count"] is not None:
+            objs = objs.all()[: options["count"]]
 
         add_to_serialize_list(objs)
 
